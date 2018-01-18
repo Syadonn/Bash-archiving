@@ -1,18 +1,16 @@
-cd ~/Téléchargements					#Change this line to change this concerned directory
-
 timemonth=$(date -d "-$1 weeks" '+%s') 	#We get the timestamp of $1 weeks ago
 namedir=$(date -d "-$1 weeks" '+%B_%Y') 	#We get the name of the future zipped dir (monthname_year)
 
-nb=$(ls| wc -l) 						#We count the number of files in the working directory
+nb=$(ls| wc -l) #We count the number of files in the working directory
 
-ls > temp 								#We get all the files names and store them in temp
+ls > temp #We get all the files names and store them in temp
 mkdir $namedir
 touch liste_fichiers.txt
 
-while [[ $nb -ge 1 ]] 					#While we haven't scan every file/dir
+while [[ $nb -ge 1 ]] 	#While we haven't scan every file/dir
 do
 	namefile=$(cat temp | head -n $nb| tail -n 1) 	#We get the file's name
-	timefile=$(date -r "$namefile" '+%s') 			#We get the file's timestamp
+	timefile=$(date -r "$namefile" '+%s') #We get the file's timestamp
 
 	if [[ $timefile -lt $timemonth ]]; then
 		mv "$namefile" $namedir
