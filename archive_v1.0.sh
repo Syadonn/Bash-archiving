@@ -7,7 +7,7 @@ ls > temp #We get all the files names and store them in temp
 mkdir $namedir
 touch liste_fichiers.txt
 
-while [[ $nb -ge 1 ]] 	#While we haven't scan every file/dir
+while [[ $nb -ge 1 ]] #While we haven't scan every file/dir
 do
 	namefile=$(cat temp | head -n $nb| tail -n 1) 	#We get the file's name
 	timefile=$(date -r "$namefile" '+%s') #We get the file's timestamp
